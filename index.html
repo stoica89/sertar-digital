@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Sertar.digital – Gestionează, notifică și păstrează în siguranță actele tale importante."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sertar.digital – Documentele tale, în siguranță.</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <img src="assets/logo.jpeg" alt="Sertar.digital logo" class="logo" />
+        <nav>
+          <ul>
+            <li><a href="#">Acasă</a></li>
+            <li><a href="#features">Funcționalități</a></li>
+            <li><a href="#signup">Înscriere</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <a href="login.html" class="btn">Login</a>
+      </div>
+    </header>
+    <section class="hero">
+      <div class="container">
+        <h1>Toate documentele tale. Într-un singur sertar digital.</h1>
+        <p>
+          Gestionează, notifică și păstrează în siguranță actele importante.
+        </p>
+        <a href="signup.html" class="btn-primary">Descarcă aplicația</a>
+        <a href="demo.html" class="btn-outline">Vezi demo</a>
+      </div>
+    </section>
+    <section id="features" class="features">
+      <div class="container">
+        <h2>Funcționalități</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <img src="assets/icons/notify.svg" alt="Notificări" />
+            <h3>Notificări automate</h3>
+            <p>Primești alerte înainte ca documentele să expire.</p>
+          </div>
+          <div class="feature-card">
+            <img
+              src="assets/icons/security-secure-protection-11-svgrepo-com.svg"
+              alt="Securitate"
+            />
+            <h3>Securitate & backup</h3>
+            <p>Datele tale sunt criptate și salvate în cloud.</p>
+          </div>
+          <div class="feature-card">
+            <img
+              src="assets/icons/calendar-svgrepo-com (1).svg"
+              alt="Calendar"
+            />
+            <h3>Calendar inteligent</h3>
+            <p>Planifică fără griji expirările și reînnoirile.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="signup" class="signup-form">
+      <div class="container">
+        <h2>Fii printre primii care testează Sertar.digital</h2>
+        <form action="signup_submit.php" method="POST">
+          <input type="text" name="nume" placeholder="Nume" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <input type="password" name="parola" placeholder="Parola" required>
+          <select name="tip_utilizator" required>
+            <option value="">Tip utilizator</option>
+            <option value="persoana">Persoană fizică</option>
+            <option value="freelancer">Freelancer</option>
+            <option value="firma">Firmă</option>
+          </select>
+          <label>
+            <input type="checkbox" name="termeni" required />
+            Sunt de acord cu <a href="termeni.html">termenii și condițiile</a>
+          </label>
+          <button type="submit">Înscrie-mă</button>
+        </form>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        <p>© Sertar.digital 2025</p>
+        <ul>
+          <li><a href="termeni.html">Termeni</a></li>
+          <li><a href="confidentialitate.html">Confidențialitate</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
