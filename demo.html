@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ghid de utilizare</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style_demo.css" />
+</head>
+<body>
+  <header class="page-header">
+    <div class="brand">
+      <a href="index.html" class="brand-link">Inapoi</a>
+    </div>
+    <nav class="header-actions">
+      <a href="login.html" class="btn btn-primary">Login</a>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <aside class="toc">
+      <h3>Cuprins</h3>
+      <ul>
+        <li><a href="#intro">Introducere</a></li>
+        <li><a href="#auth">Autentificare și acces</a></li>
+        <li><a href="#dashboard">Navigarea în dashboard</a></li>
+        <li><a href="#actiuni">Acțiuni frecvente</a></li>
+        <li><a href="#cont">Setări cont și siguranță</a></li>
+        <li><a href="#support">Asistență</a></li>
+      </ul>
+    </aside>
+
+    <article class="content">
+      <section id="intro" class="card">
+        <h1>Ghid de utilizare</h1>
+        <p>Acest ghid te ajută să parcurgi rapid fluxul aplicației: de la autentificare, la navigarea în dashboard și acțiunile de bază.</p>
+        <figure class="figure">
+          <img
+            src="assets/demo_pictures/app-screen.png"
+            alt="Ilustrație generală a ghidului"
+          />
+          <figcaption>Prezentare generală a experienței în aplicație.</figcaption>
+        </figure>
+      </section>
+
+      <section id="auth" class="card">
+        <h2>Autentificare și acces</h2>
+        <ul class="list">
+          <li><strong>Acces:</strong> mergi la pagina de login și introdu adresa de e-mail și parola.</li>
+          <li><strong>După autentificare:</strong> ești redirecționat automat către dashboard.</li>
+          <li><strong>Deconectare:</strong> folosește butonul Logout din dashboard.</li>
+        </ul>
+        <figure class="figure">
+          <img
+            src="assets/demo_pictures/login-screen.png"
+            alt="Captură ecran pagină de login"
+          />
+          <figcaption>Exemplu: pagina de autentificare.</figcaption>
+        </figure>
+      </section>
+
+      <section id="dashboard" class="card">
+        <h2>Navigarea în dashboard</h2>
+        <p>Zona principală afișează informațiile tale și acțiunile disponibile. Meniul (dacă există) îți oferă acces la secțiuni precum profilul, setările și ieșirea din cont.</p>
+        <figure class="figure">
+          <img
+            src="assets/demo_pictures/menu-screen.png"
+            alt="Captură ecran dashboard"
+          />
+          <figcaption>Exemplu: zonă principală a dashboard-ului.</figcaption>
+        </figure>
+      </section>
+
+      <section id="actiuni" class="card">
+        <h2>Acțiuni frecvente</h2>
+        <ul class="list">
+          <li><strong>Actualizare date:</strong> modifică nume, parolă sau preferințe din secțiunea de profil/setări.</li>
+          <li><strong>Navigare:</strong> folosește elementele de meniu pentru a comuta între secțiuni.</li>
+          <li><strong>Logout:</strong> apasă butonul Logout pentru a te deconecta în siguranță.</li>
+        </ul>
+        <figure class="figure">
+          <img
+            src="assets/demo_pictures/logout-screen.png"
+            alt="Captură ecran acțiune de logout"
+          />
+          <figcaption>Exemplu: ieșirea din cont.</figcaption>
+        </figure>
+      </section>
+
+      <section id="cont" class="card">
+        <h2>Setări cont și siguranță</h2>
+        <ul class="list">
+          <li><strong>Parole puternice:</strong> folosește minim 12 caractere, cu litere mari/mici, cifre și simboluri.</li>
+          <li><strong>Sesiune:</strong> după logout, pagina de dashboard nu ar trebui să fie accesibilă din istoricul browserului.</li>
+          <li><strong>Confidențialitate:</strong> consultă Politica de Confidențialitate pentru detalii despre date.</li>
+        </ul>
+      </section>
+
+      <section id="support" class="card">
+        <h2>Asistență</h2>
+        <p>Dacă întâmpini probleme, folosește pagina de Contact sau scrie-ne pe e-mail. Include pe cât posibil pașii pentru a reproduce problema.</p>
+        <div class="actions">
+          <a href="../contact.html" class="btn">Contact</a>
+          <a href="../termeni_conditii.html" class="btn btn-ghost">Termeni și Condiții</a>
+          <a href="../politica_confidentialitate.html" class="btn btn-ghost">Politica de Confidențialitate</a>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer class="page-footer">
+    <a href="index.html" class="btn-link">⟵ Înapoi la pagina de start</a>
+  </footer>
+
+  <script>
+    // Scroll lin către secțiuni
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
