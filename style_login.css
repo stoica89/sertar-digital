@@ -90,3 +90,29 @@ body {
     transform: translateY(0);
   }
 }
+/* === Responsive design === */
+
+/* Tablete */
+@media (max-width: 1024px) {
+  .login-container {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+}
+
+/* Telefoane */
+@media (max-width: 600px) {
+  body {
+    background: #fff;
+  }
+  .login-container {
+    margin: 2vh auto;
+    padding: 1rem;
+    box-shadow: none;
+    border-radius: 0;
+  }
+   .login-container h2 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+}

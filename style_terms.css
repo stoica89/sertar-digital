@@ -45,3 +45,43 @@ p {
 .btn-back:hover {
     background: #1c5d85;
 }
+/* === Responsive design === */
+
+/* Tablete */
+@media (max-width: 1024px) {
+  .terms-container {
+    max-width: 95%;
+    padding: 1.5rem;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Telefoane */
+@media (max-width: 600px) {
+  .terms-container {
+    margin: 0;
+    padding: 1rem;
+    border-radius: 0;
+    box-shadow: none;
+  }
+   h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  h2 {
+    font-size: 1.2rem;
+  }
+  p, li {
+    font-size: 0.95rem;
+  }
+  ul {
+    padding-left: 1rem;
+  }
+  .btn-back {
+    display: block;
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+}
