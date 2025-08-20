@@ -7,8 +7,8 @@
 
 /* Fundal gradient */
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #74ebd5, #acb6e5);
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -111,7 +111,7 @@ body {
     box-shadow: none;
     border-radius: 0;
   }
-   .login-container h2 {
+  .login-container h2 {
     font-size: 1.5rem;
     text-align: center;
   }

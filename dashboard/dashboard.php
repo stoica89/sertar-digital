@@ -23,19 +23,26 @@ if (!isset($_SESSION['user_email'])) {
   <link rel="stylesheet" href="dashboard.css" />
 </head>
 <body>
-  <!-- Sidebar navigație -->
-  <aside class="sidebar">
-    <div class="logo">Sertar.digital</div>
-    <nav>
-      <ul>
-        <li><a href="#">Dashboard</a></li>
-        <li><a href="#">Documente</a></li>
-        <li><a href="#">Notificări</a></li>
-        <li><a href="#">Setări</a></li>
-        <li><button id="btnLogout">Logout</button></li>
-      </ul>
-    </nav>
-  </aside>
+<?php
+  $current_page = basename($_SERVER['PHP_SELF']);
+?>
+
+  <!-- Sidebar -->
+<aside class="sidebar">
+  <nav>
+    <ul>
+      <li><a href="dashboard.php" class="<?= $current_page == 'dashboard.php' ? 'active' : '' ?>">🏠 Dashboard</a></li>
+      <li><a href="documente.php" class="<?= $current_page == 'documente.php' ? 'active' : '' ?>">📂 Documente</a></li>
+      <li><a href="notificari.php" class="<?= $current_page == 'notificari.php' ? 'active' : '' ?>">🔔 Notificări</a></li>
+      <li><a href="setari.php" class="<?= $current_page == 'setari.php' ? 'active' : '' ?>">⚙️ Setări</a></li>
+      <li>
+        <form action="logout.php" method="post" style="margin:0;">
+          <button type="submit" class="logout-btn">🚪 Logout</button>
+        </form>
+      </li>
+    </ul>
+  </nav>
+</aside>
 
   <!-- Conținut principal -->
   <main class="main-content">
@@ -51,13 +58,10 @@ if (!isset($_SESSION['user_email'])) {
         // Dacă avem doar email-ul, luăm partea dinainte de @
         $nume_afisat = ucfirst(explode('@', $_SESSION['user_email'])[0]);
     }
-?><h1>Salut <?= htmlspecialchars($_SESSION['user_name']) ?> 👋</h1>
-
-
-
-
-      <button class="add-doc">+ Adaugă document</button>
-    </header>
+?>
+  <h1>Salut <?= htmlspecialchars($_SESSION['user_name']) ?> 👋</h1>
+  <button class="add-doc" id="btnAddDoc">+ Adaugă document</button>
+  </header>
 
     <!-- Secțiune carduri documente -->
     <section class="expiring-docs">
@@ -65,7 +69,7 @@ if (!isset($_SESSION['user_email'])) {
       <div class="cards-container">
         <!-- Carduri individuale -->
         <div class="doc-card">
-          <h3>CI - Stoica</h3>
+          <h3>CI </h3>
           <p>Expiră în 5 zile</p>
         </div>
         <div class="doc-card">
@@ -90,6 +94,27 @@ if (!isset($_SESSION['user_email'])) {
       </div>
     </section>
   </main>
-  <script src="dashboard.js"></script>
+  
+  <!-- Formular modal pentru adăugare document -->
+<div id="addDocModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeModal">&times;</span>
+    <h2>Adaugă document</h2>
+    <form action="upload_document.php" method="POST" enctype="multipart/form-data">
+      <label for="docName">Denumire document</label>
+      <input type="text" id="docName" name="docName" required>
+
+      <label for="expiryDate">Data expirării</label>
+      <input type="date" id="expiryDate" name="expiryDate" required>
+
+      <label for="fileUpload">Fișier</label>
+      <input type="file" id="fileUpload" name="fileUpload" required>
+
+      <button type="submit">Salvează</button>
+    </form>
+  </div>
+</div>
+
+<script src="dashboard.js" defer></script>
 </body>
 </html>
