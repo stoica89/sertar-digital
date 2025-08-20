@@ -67,9 +67,15 @@
       <div class="container">
         <h2>Fii printre primii care testează Sertar.digital</h2>
         <form action="signup_submit.php" method="POST">
+          <input type="text" name="prenume" placeholder="Prenume" required />
           <input type="text" name="nume" placeholder="Nume" required />
-          <input type="email" name="email" placeholder="Email" required />
-          <input type="password" name="parola" placeholder="Parola" required>
+          <input
+            type="email"
+            name="email"
+            placeholder="Adresa de email"
+            required
+          />
+          <input type="password" name="parola" placeholder="Parola" required />
           <select name="tip_utilizator" required>
             <option value="">Tip utilizator</option>
             <option value="persoana">Persoană fizică</option>

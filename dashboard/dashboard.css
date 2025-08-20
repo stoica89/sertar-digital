@@ -50,9 +50,7 @@ body {
   padding: 5px;
   margin-top: 50px;
 }
-#btnLogout :hover {
-  color: #00bfa6;
-}
+
 .sidebar nav ul li a:hover {
   color: #00bfa6;
 }

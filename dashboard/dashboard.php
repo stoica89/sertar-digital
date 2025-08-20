@@ -40,7 +40,22 @@ if (!isset($_SESSION['user_email'])) {
   <!-- Conținut principal -->
   <main class="main-content">
     <header class="topbar">
-      <h1>Salut, Stoica 👋</h1>
+      <?php
+    // Extragem doar primul nume
+    $nume_afisat = '';
+
+    if (isset($_SESSION['user_name'])) {
+        // Dacă am numele complet salvat, luăm doar primul cuvânt
+        $nume_afisat = explode(' ', trim($_SESSION['user_name']))[0];
+    } elseif (isset($_SESSION['user_email'])) {
+        // Dacă avem doar email-ul, luăm partea dinainte de @
+        $nume_afisat = ucfirst(explode('@', $_SESSION['user_email'])[0]);
+    }
+?><h1>Salut <?= htmlspecialchars($_SESSION['user_name']) ?> 👋</h1>
+
+
+
+
       <button class="add-doc">+ Adaugă document</button>
     </header>
 
