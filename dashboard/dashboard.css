@@ -54,7 +54,6 @@ body {
   background: #2563eb;
 }
 
-
 /* Conținut principal */
 .main-content {
   margin-left: 240px;
@@ -74,7 +73,7 @@ body {
   font-size: 1.8rem;
 }
 
- #btnAddDoc {
+#btnAddDoc {
   background-color: #00bfa6;
   color: white;
   border: none;
@@ -150,9 +149,11 @@ body {
   display: none;
   position: fixed;
   z-index: 100;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.5);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
 }
 .modal-content {
   background: #fff;
@@ -166,6 +167,46 @@ body {
   float: right;
   cursor: pointer;
   font-size: 1.5rem;
+}
+
+.flash {
+  margin: 12px 0;
+  padding: 10px 12px;
+  border-radius: 6px;
+}
+.flash.success {
+  background: #e8f7ee;
+  color: #26653a;
+  border: 1px solid #bfe5cb;
+}
+.flash.error {
+  background: #fdecea;
+  color: #8a2a2a;
+  border: 1px solid #f5c2c0;
+}
+.doc-actions {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.btn {
+  background: #2563eb;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.btn-delete {
+  background: #ef4444;
+  color: #fff;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.btn-delete:hover {
+  background: #dc2626;
 }
 
 /* =====================
