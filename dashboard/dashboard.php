@@ -2,13 +2,7 @@
 // Pornim sesiunea
 session_start();
 
-// Generăm token CSRF dacă nu există
-if (empty($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-}
-$csrf = $_SESSION['csrf_token'];
-
-// Anteturi anti-cache
+// Anteturi anti-cache pentru a preveni back-button după logout
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
@@ -19,6 +13,12 @@ if (!isset($_SESSION['user_email'])) {
     header("Location: ../login.html");
     exit;
 }
+
+// Generăm token CSRF dacă nu există
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+$csrf = $_SESSION['csrf_token'];
 
 // Funcție pentru calculul zilelor până la expirare
 function zilePanaLa($date) {
@@ -41,7 +41,6 @@ if (file_exists($csvPath)) {
         list($owner, $docId, $docName, $expiry, $stored, $orig, $uploadedAt) = $r;
         if ($owner !== $user) continue;
 
-        $zile = zilePanaLa($expiry);
         $zile = zilePanaLa($expiry);
         if ($zile !== null && $zile <= 30) {
             $curand[] = ['id' => $docId, 'name' => $docName, 'zile' => $zile, 'expiry' => $expiry];
@@ -82,8 +81,8 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <li><a href="notificari.php" class="<?= $current_page == 'notificari.php' ? 'active' : '' ?>">🔔 Notificări</a></li>
             <li><a href="setari.php" class="<?= $current_page == 'setari.php' ? 'active' : '' ?>">⚙️ Setări</a></li>
             <li>
-                <form action="logout.php" method="post" style="margin:0;">
-                    <button type="submit" class="logout-btn">🚪 Logout</button>
+                <form action="/sertar-digital.app/sertar-digital/logout.php" method="post" style="margin:0;">
+                     <button type="submit" class="logout-btn">🚪 Logout</button>
                 </form>
             </li>
         </ul>
@@ -93,7 +92,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 <!-- Conținut principal -->
 <main class="main-content">
     <header class="topbar">
-        <h1>Salut <?= htmlspecialchars($_SESSION['user_name']) ?> 👋</h1>
+        <h1>Salut <?= htmlspecialchars($nume_afisat) ?> 👋</h1>
         <button class="add-doc" id="btnAddDoc">+ Adaugă document</button>
     </header>
 
@@ -125,21 +124,20 @@ $current_page = basename($_SERVER['PHP_SELF']);
   </div>
 </section>
 
-
-    <!-- Statistici -->
-    <section class="stats">
-        <h2>Statistici rapide</h2>
-        <div class="stats-grid">
-            <div class="stat-box">
-                <h3>12</h3>
-                <p>Documente active</p>
-            </div>
-            <div class="stat-box">
-                <h3>3</h3>
-                <p>Notificări trimise</p>
-            </div>
+<!-- Statistici -->
+<section class="stats">
+    <h2>Statistici rapide</h2>
+    <div class="stats-grid">
+        <div class="stat-box">
+            <h3>12</h3>
+            <p>Documente active</p>
         </div>
-    </section>
+        <div class="stat-box">
+            <h3>3</h3>
+            <p>Notificări trimise</p>
+        </div>
+    </div>
+</section>
 </main>
 
 <!-- Modal adăugare document -->
