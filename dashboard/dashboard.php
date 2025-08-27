@@ -93,7 +93,25 @@ $current_page = basename($_SERVER['PHP_SELF']);
 <main class="main-content">
     <header class="topbar">
         <h1>Salut <?= htmlspecialchars($nume_afisat) ?> 👋</h1>
-        <button class="add-doc" id="btnAddDoc">+ Adaugă document</button>
+        <!-- Butonul și modalul -->
+<button class="add-doc" id="btnAddDoc">+ Adaugă document</button>
+
+<div id="addDocModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeModal">&times;</span>
+    <h2>Adaugă document</h2>
+    <form action="upload_document.php" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf) ?>">
+      <label for="docName">Denumire document</label>
+      <input type="text" id="docName" name="docName" required>
+      <label for="expiryDate">Data expirării</label>
+      <input type="date" id="expiryDate" name="expiryDate" required>
+      <label for="fileUpload">Fișier</label>
+      <input type="file" id="fileUpload" name="fileUpload" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" required>
+      <button type="submit">Salvează</button>
+    </form>
+  </div>
+</div>
     </header>
 
     <?php if (isset($_GET['uploaded'])): ?>
@@ -139,28 +157,6 @@ $current_page = basename($_SERVER['PHP_SELF']);
     </div>
 </section>
 </main>
-
-<!-- Modal adăugare document -->
-<div id="addDocModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" id="closeModal">&times;</span>
-        <h2>Adaugă document</h2>
-        <form action="upload_document.php" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf) ?>">
-
-            <label for="docName">Denumire document</label>
-            <input type="text" id="docName" name="docName" required>
-
-            <label for="expiryDate">Data expirării</label>
-            <input type="date" id="expiryDate" name="expiryDate" required>
-
-            <label for="fileUpload">Fișier</label>
-            <input type="file" id="fileUpload" name="fileUpload" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" required>
-
-            <button type="submit">Salvează</button>
-        </form>
-    </div>
-</div>
 
 <script src="dashboard.js" defer></script>
 </body>

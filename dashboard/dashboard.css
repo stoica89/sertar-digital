@@ -155,6 +155,11 @@ body {
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
 }
+.modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .modal-content {
   background: #fff;
   margin: 10% auto;
@@ -162,13 +167,20 @@ body {
   width: 90%;
   max-width: 500px;
   border-radius: 8px;
+  position: relative;
 }
 .close-btn {
   float: right;
   cursor: pointer;
   font-size: 1.5rem;
+  background: none;
+  border: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 
+/* Flash messages */
 .flash {
   margin: 12px 0;
   padding: 10px 12px;
