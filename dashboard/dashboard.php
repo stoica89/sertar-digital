@@ -60,6 +60,30 @@ if (isset($_SESSION['user_name'])) {
 
 // Pagina curentă
 $current_page = basename($_SERVER['PHP_SELF']);
+
+// Statistici documente active
+$active_docs = 0;
+if (file_exists($csvPath)) {
+    $rows = array_map('str_getcsv', file($csvPath));
+    if ($rows && $rows[0][0] === 'user_email') array_shift($rows);
+    foreach ($rows as $r) {
+        list($owner, $docId, $docName, $expiry, $stored, $orig, $uploadedAt) = $r;
+        if ($owner !== $user) continue;
+        if (zilePanaLa($expiry) >= 0) $active_docs++;
+    }
+}
+
+// Statistici notificări trimise (exemplu simplu)
+$notificari_count = 0;
+$notificariPath = __DIR__ . '/notificari.csv';
+if (file_exists($notificariPath)) {
+    $rows = array_map('str_getcsv', file($notificariPath));
+    if ($rows && $rows[0][0] === 'user_email') array_shift($rows);
+    foreach ($rows as $r) {
+        // presupunem: user_email, doc_id, mesaj, data
+        if ($r[0] === $user) $notificari_count++;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -147,16 +171,23 @@ $current_page = basename($_SERVER['PHP_SELF']);
     <h2>Statistici rapide</h2>
     <div class="stats-grid">
         <div class="stat-box">
-            <h3>12</h3>
+            <h3><?= $active_docs ?></h3>
             <p>Documente active</p>
         </div>
         <div class="stat-box">
-            <h3>3</h3>
+            <h3><?= $notificari_count ?></h3>
             <p>Notificări trimise</p>
         </div>
     </div>
 </section>
 </main>
+
+<?php if (isset($_SESSION['user_name'], $_SESSION['user_email'])): ?>
+<script>
+  sessionStorage.setItem("user_name", "<?= htmlspecialchars($_SESSION['user_name']) ?>");
+  sessionStorage.setItem("user_email", "<?= htmlspecialchars($_SESSION['user_email']) ?>");
+</script>
+<?php endif; ?>
 
 <script src="dashboard.js" defer></script>
 </body>

@@ -162,22 +162,101 @@ body {
 }
 .modal-content {
   background: #fff;
-  margin: 10% auto;
-  padding: 1.5rem;
-  width: 90%;
-  max-width: 500px;
-  border-radius: 8px;
+  margin: 0 auto;
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  width: 95%;
+  max-width: 600px;
+  border-radius: 18px;
   position: relative;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  animation: modalPop 0.25s cubic-bezier(.4,2,.6,1) both;
 }
+
+@keyframes modalPop {
+  0% { transform: scale(0.92) translateY(40px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
 .close-btn {
   float: right;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 2rem;
   background: none;
   border: none;
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 1.2rem;
+  right: 1.5rem;
+  color: #888;
+  transition: color 0.2s;
+}
+.close-btn:hover {
+  color: #2563eb;
+}
+
+.modal-content h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: #2563eb;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.modal-content label {
+  font-weight: 500;
+  color: #1e2a38;
+  margin-bottom: 0.3rem;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="date"],
+.modal-content input[type="file"] {
+  padding: 0.7rem 1rem;
+  border: 1.5px solid #e0e7ef;
+  border-radius: 7px;
+  font-size: 1.08rem;
+  background: #f8fafc;
+  transition: border 0.2s;
+}
+
+.modal-content input[type="text"]:focus,
+.modal-content input[type="date"]:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+.modal-content input[type="file"] {
+  background: #fff;
+  border: none;
+  padding-left: 0;
+}
+
+.modal-content button[type="submit"] {
+  margin-top: 1.2rem;
+  background: linear-gradient(90deg, #2563eb 60%, #00bfa6 100%);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 0;
+  border-radius: 7px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.07);
+  letter-spacing: 0.5px;
+}
+.modal-content button[type="submit"]:hover {
+  background: linear-gradient(90deg, #00bfa6 0%, #2563eb 100%);
+  box-shadow: 0 4px 16px rgba(0,191,166,0.10);
 }
 
 /* Flash messages */

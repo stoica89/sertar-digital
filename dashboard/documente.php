@@ -41,6 +41,9 @@ if (file_exists($csvPath)) {
   <main class="main-content">
     <h1>Documentele mele</h1>
 
+    <!-- Buton Înapoi la Dashboard -->
+    <a href="dashboard.php" class="btn" style="margin-bottom:20px;display:inline-block;">&larr; Înapoi la Dashboard</a>
+
     <!-- Butonul și modalul -->
     <button class="add-doc" id="btnAddDoc">+ Adaugă document</button>
 
