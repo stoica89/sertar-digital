@@ -127,7 +127,7 @@ if (file_exists($notificariPath)) {
     <form action="upload_document.php" method="POST" enctype="multipart/form-data">
       <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf) ?>">
       <label for="docName">Denumire document</label>
-      <input type="text" id="docName" name="docName" required>
+      <input type="text" id="docName" name="docName" required placeholder="Introduceti denumirea documentului">
       <label for="expiryDate">Data expirării</label>
       <input type="date" id="expiryDate" name="expiryDate" required>
       <label for="fileUpload">Fișier</label>
